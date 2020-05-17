@@ -1,5 +1,5 @@
 
-export enum CO2 {
+enum CO2 {
 
     //Small 
     'small-diesel-car' = 142,
@@ -23,24 +23,60 @@ export enum CO2 {
     'train' = 6
 }
 
+export class Api {
+
+    static validateOptions(options: { distance: any; "transportation-method"?: string; "unit-of-distance"?: string; output?: string | undefined; }) {
+
+        if (!options.distance) {
+            throw new Error('option "distance" is missing.')
+        } else if (isNaN(options.distance)) {
+            throw new TypeError('option "distance" is not a number.')
+        }
+
+        return true;
+    }
+
+    static isTransportationMethodInCo2() {
 
 
+        return true;
+    }
 
-    export function main(options: {
+    static isDistanceCorrect() {
+
+        return true;
+    }
+
+    static getUnitOfDistanceInKmOrM(distance: number, unit?: 'kg' | 'g') {
+
+        let text = '';
+        let output: number = distance;
+
+        if (unit == 'kg') {
+            output = (output / 1000)
+            output = Math.round((output) * 10) / 10
+        }
+
+        text = '' + output + unit;
+        return text;
+    }
+
+
+    static main(options: {
         'distance': number;
         'transportation-method': string;
         'unit-of-distance': string;
         'output'?: string;
     }): string {
-        
-        const co2Result = CO2['medium-diesel-car'] * options.distance;
 
-        let output: number = co2Result;
+        var transportationMethod: CO2 = CO2[options['transportation-method'] as keyof typeof CO2];
 
-        if (output >= 1000) {
-            output = (output / 1000)
-            output = Math.round((output) * 10) / 10
-        }
+        const co2Result = transportationMethod * options.distance;
+        let text = '';
 
-        return `Your trip caused ${output}kg of CO2-equivalent.`;
+        Api.validateOptions(options);
+
+        text = Api.getUnitOfDistanceInKmOrM(co2Result, 'kg');
+        return `Your trip caused ${text} of CO2-equivalent.`;
     }
+}

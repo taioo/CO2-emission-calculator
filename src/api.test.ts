@@ -1,4 +1,6 @@
 import {main} from './api';
+// yarn test
+
 
 test('check Test', () => {
     expect(
@@ -8,3 +10,4 @@ test('check Test', () => {
     ).toBe('hello world');
 
 });
+

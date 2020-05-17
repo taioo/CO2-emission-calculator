@@ -1,11 +1,5 @@
-export function main () {
 
-    return 'hello world'
-}
-
-
-
-enum CO2 {
+export enum CO2 {
 
     //Small 
     'small-diesel-car' = 142,
@@ -28,3 +22,25 @@ enum CO2 {
     'bus' = 27,
     'train' = 6
 }
+
+
+
+
+    export function main(options: {
+        'distance': number;
+        'transportation-method': string;
+        'unit-of-distance': string;
+        'output'?: string;
+    }): string {
+        
+        const co2Result = CO2['medium-diesel-car'] * options.distance;
+
+        let output: number = co2Result;
+
+        if (output >= 1000) {
+            output = (output / 1000)
+            output = Math.round((output) * 10) / 10
+        }
+
+        return `Your trip caused ${output}kg of CO2-equivalent.`;
+    }

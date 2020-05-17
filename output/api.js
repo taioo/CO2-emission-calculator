@@ -1,10 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.main = void 0;
-function main() {
-    return 'hello world';
-}
-exports.main = main;
+exports.main = exports.CO2 = void 0;
 var CO2;
 (function (CO2) {
     //Small 
@@ -24,4 +20,14 @@ var CO2;
     CO2[CO2["large-electric-car"] = 73] = "large-electric-car";
     CO2[CO2["bus"] = 27] = "bus";
     CO2[CO2["train"] = 6] = "train";
-})(CO2 || (CO2 = {}));
+})(CO2 = exports.CO2 || (exports.CO2 = {}));
+function main(options) {
+    var co2Result = CO2['medium-diesel-car'] * options.distance;
+    var output = co2Result;
+    if (output >= 1000) {
+        output = (output / 1000);
+        output = Math.round((output) * 10) / 10;
+    }
+    return "Your trip caused " + output + options["unit-of-distance"] + " of CO2-equivalent.";
+}
+exports.main = main;

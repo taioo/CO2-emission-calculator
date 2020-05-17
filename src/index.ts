@@ -1,12 +1,22 @@
 import yargs = require('yargs');
-
+import {main} from './api';
 
 const argv = yargs.scriptName("co2-calculator")
   .options({
-    'name': { type: 'string', demandOption: true }
+    'transportation-method': { type: 'string', demandOption: true },
+    'distance': { type: 'number', demandOption: true },
+    'unit-of-distance': { type: 'string', demandOption: false, default: 'km' },
+    'output': { type: 'string', demandOption: false },
   }
   ).argv;
 
-  console.log(argv.name);
+const result = main({
+  'distance': argv.distance,
+  'transportation-method': argv["transportation-method"],
+  'unit-of-distance': argv["unit-of-distance"],
+  'output': argv.output
+});
 
-  //yarn start --co2-calcolatro --name thaer 
+console.log(result);
+
+  // yarn start --co2-calcolatro  --transportation-method medium-diesel-car --distance 15 --unit-of-distance km

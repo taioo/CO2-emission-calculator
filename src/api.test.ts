@@ -2,7 +2,7 @@ import { Api } from './api';
 
 
 describe('Basics', () => {
-    // npm start --  --transportation-method medium-diesel-car --distance 15 --unit-of-distance km
+    // yarn start --co2-calcolatro  --transportation-method medium-diesel-car --distance 15 --unit-of-distance km
     test('General Test', () => {
         expect(
             Api.main({

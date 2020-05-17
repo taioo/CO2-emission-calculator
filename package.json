@@ -19,13 +19,13 @@
   },
   "homepage": "https://github.com/taioo/CO2-emission-calculator#readme",
   "devDependencies": {
+    "@types/jest": "^25.2.2",
     "jest": "^26.0.1",
     "ts-jest": "^26.0.0",
     "tslint": "^6.1.2",
-    "typescript": "^3.9.2",
-    "@types/jest": "^25.2.2"
+    "typescript": "^3.9.2"
   },
   "dependencies": {
-    
+    "yargs": "^15.3.1"
   }
 }

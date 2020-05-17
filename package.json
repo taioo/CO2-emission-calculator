@@ -1,0 +1,31 @@
+{
+  "name": "co2-emission-calculator",
+  "version": "1.0.0",
+  "description": "Your task is to create a program that returns the amount of CO2-equivalent that will be caused when traveling a given distance using a given transportation method.",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node output/index.js",
+    "compile": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taioo/CO2-emission-calculator.git"
+  },
+  "author": "Thaer Aldefai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taioo/CO2-emission-calculator/issues"
+  },
+  "homepage": "https://github.com/taioo/CO2-emission-calculator#readme",
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "ts-jest": "^26.0.0",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.2",
+    "@types/jest": "^25.2.2"
+  },
+  "dependencies": {
+    
+  }
+}

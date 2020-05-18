@@ -31,30 +31,61 @@ var Api = /** @class */ (function () {
         else if (isNaN(options.distance)) {
             throw new TypeError('option "distance" is not a number.');
         }
-        return true;
-    };
-    Api.isTransportationMethodInCo2 = function () {
-        return true;
-    };
-    Api.isDistanceCorrect = function () {
-        return true;
-    };
-    Api.getUnitOfDistanceInKmOrM = function (distance, unit) {
-        var text = '';
-        var output = distance;
-        if (unit == 'kg') {
-            output = (output / 1000);
-            output = Math.round((output) * 10) / 10;
+        else if (options.distance < 0) {
+            throw new TypeError('option "distance" is a negative number.');
         }
-        text = '' + output + unit;
-        return text;
+        else if (!options['unit-of-distance']) {
+            throw new Error('option "unit-of-distance" is missing.');
+        }
+        else if (options['unit-of-distance'] != 'km' && options['unit-of-distance'] != 'm') {
+            throw new TypeError('option "unit-of-distance" is invalid.');
+        }
+        else if (!options['transportation-method']) {
+            throw new Error('option "transportation-method" is missing.');
+        }
+        else if (!(CO2[options['transportation-method']] in CO2)) {
+            throw new TypeError('option "transportation-method" is invalid.');
+        }
+        else if (options.output && options.output != 'kg' && options.output != 'g') {
+            throw new TypeError('option "output" is invalid.');
+        }
+        return true;
+    };
+    Api.getUnitInGrammOrKg = function (co2Result, output) {
+        var result = co2Result;
+        var finalUnit = 'g';
+        // if ((!output && co2Result > 999) || output === 'kg') {
+        //     result = (result / 1000);
+        //     result = Math.round((result) * 10) / 10;
+        //     finalUnit = 'kg';
+        // }
+        if (!output && co2Result > 999) {
+            result = (result / 1000);
+            result = Math.round((result) * 10) / 10;
+            finalUnit = 'kg';
+        }
+        else if (output == 'kg') {
+            result = (result / 1000);
+            result = Math.round((result) * 10) / 10;
+            finalUnit = 'kg';
+        }
+        return result + finalUnit;
+    };
+    Api.getDistanceInKm = function (distance, unit) {
+        var finalDistance = distance;
+        if (unit == 'm') {
+            finalDistance = finalDistance / 1000;
+        }
+        return finalDistance;
     };
     Api.main = function (options) {
+        Api.validateOptions(options);
         var transportationMethod = CO2[options['transportation-method']];
-        var co2Result = transportationMethod * options.distance;
+        var distance = Api.getDistanceInKm(options.distance, options["unit-of-distance"]);
+        var co2Result = transportationMethod * distance;
         var text = '';
         Api.validateOptions(options);
-        text = Api.getUnitOfDistanceInKmOrM(co2Result, 'kg');
+        text = Api.getUnitInGrammOrKg(co2Result, options.output);
         return "Your trip caused " + text + " of CO2-equivalent.";
     };
     return Api;

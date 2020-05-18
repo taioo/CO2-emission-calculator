@@ -25,40 +25,63 @@ enum CO2 {
 
 export class Api {
 
-    static validateOptions(options: { distance: any; "transportation-method"?: string; "unit-of-distance"?: string; output?: string | undefined; }) {
+    static validateOptions(options: any) {
 
         if (!options.distance) {
-            throw new Error('option "distance" is missing.')
+            throw new Error('option "distance" is missing.');
         } else if (isNaN(options.distance)) {
-            throw new TypeError('option "distance" is not a number.')
+            throw new TypeError('option "distance" is not a number.');
+        } else if (options.distance < 0) {
+            throw new TypeError('option "distance" is a negative number.');
+        } else if (!options['unit-of-distance']) {
+            throw new Error('option "unit-of-distance" is missing.');
+        } else if (options['unit-of-distance'] != 'km' && options['unit-of-distance'] != 'm') {
+            throw new TypeError('option "unit-of-distance" is invalid.');
+        } else if (!options['transportation-method']) {
+            throw new Error('option "transportation-method" is missing.');
+        } else if (!(CO2[options['transportation-method'] as keyof typeof CO2] in CO2)) {
+            throw new TypeError('option "transportation-method" is invalid.');
+        } else if (options.output && options.output != 'kg' && options.output != 'g') {
+            throw new TypeError('option "output" is invalid.');
         }
 
         return true;
     }
 
-    static isTransportationMethodInCo2() {
+    static getUnitInGrammOrKg(co2Result: number, output?: string) {
 
+        let result: number = co2Result;
+        let finalUnit = 'g';
 
-        return true;
-    }
-
-    static isDistanceCorrect() {
-
-        return true;
-    }
-
-    static getUnitOfDistanceInKmOrM(distance: number, unit?: 'kg' | 'g') {
-
-        let text = '';
-        let output: number = distance;
-
-        if (unit == 'kg') {
-            output = (output / 1000)
-            output = Math.round((output) * 10) / 10
+        if ((!output && co2Result > 999) || output === 'kg') {
+            result = (result / 1000);
+            result = Math.round((result) * 10) / 10;
+            finalUnit = 'kg';
         }
 
-        text = '' + output + unit;
-        return text;
+
+        // if (!output && co2Result > 999) {
+        //     result = (result / 1000);
+        //     result = Math.round((result) * 10) / 10;
+        //     finalUnit = 'kg';
+        // }
+
+        // else if (output == 'kg') {
+        //     result = (result / 1000);
+        //     result = Math.round((result) * 10) / 10;
+        //     finalUnit = 'kg';
+        // }
+
+        return result + finalUnit;
+    }
+
+
+    static getDistanceInKm(distance: number, unit?: string) {
+        let finalDistance: number = distance;
+        if (unit == 'm') {
+            finalDistance = finalDistance / 1000
+        }
+        return finalDistance;
     }
 
 
@@ -69,14 +92,17 @@ export class Api {
         'output'?: string;
     }): string {
 
-        var transportationMethod: CO2 = CO2[options['transportation-method'] as keyof typeof CO2];
+        Api.validateOptions(options);
 
-        const co2Result = transportationMethod * options.distance;
+        const transportationMethod = CO2[options['transportation-method'] as keyof typeof CO2];
+        const distance = Api.getDistanceInKm(options.distance, options["unit-of-distance"]);
+
+        const co2Result = transportationMethod * distance;
         let text = '';
 
         Api.validateOptions(options);
 
-        text = Api.getUnitOfDistanceInKmOrM(co2Result, 'kg');
+        text = Api.getUnitInGrammOrKg(co2Result, options.output);
         return `Your trip caused ${text} of CO2-equivalent.`;
     }
 }

@@ -1,9 +1,10 @@
 import { Api } from './api';
+import * as child from 'child_process';
 
 
 describe('Example Use Cases', () => {
     // npm start --  --transportation-method medium-diesel-car --distance 15 --unit-of-distance km
-    test('General Test', () => {
+    test('without output', () => {
         expect(
             Api.main({
                 'transportation-method': 'medium-diesel-car',
@@ -14,19 +15,19 @@ describe('Example Use Cases', () => {
     });
 
     //npm start -- --distance 1800.5 --transportation-method large-petrol-car
-    test('General Test', () => {
+    test('without unit-of-distance && output', () => {
         expect(
             Api.main({
                 'transportation-method': 'large-petrol-car',
                 'distance': 1800.5,
-                // yargs default km
+                // yargs in index.ts default value ('km')
                 'unit-of-distance': 'km',
             })
         ).toEqual('Your trip caused 507.7kg of CO2-equivalent.');
     });
 
     //npm start -- --transportation-method train --distance 14500 --unit-of-distance m
-    test('General Test', () => {
+    test('unit-of-distance in m', () => {
         expect(
             Api.main({
                 'transportation-method': 'train',
@@ -37,7 +38,7 @@ describe('Example Use Cases', () => {
     });
 
     //npm start -- --transportation-method train --distance 14500 --unit-of-distance m --output kg
-    test('General Test', () => {
+    test('unit-of-distance in m and output in kg', () => {
         expect(
             Api.main({
                 'transportation-method': 'train',
@@ -204,6 +205,26 @@ describe('Validation', () => {
         expect(
             Api.getDistanceInKm(1000)
         ).toBe(1000);
+    });
+
+    test('end 2 end', (done) => {
+
+        let command = "./co2-calculator --transportation-method medium-diesel-car --distance 15 --unit-of-distance km"
+        let expectedOut = "Your trip caused 2.6kg of CO2-equivalent."
+
+        child.exec(command, (error: child.ExecException|null, stdout: string) => {
+            // error from cmd output
+            if (error) {
+                fail(`exec error: ${error}`);
+            } else {
+                expect(
+                    stdout
+                ).toBe(expectedOut + "\n");
+            }
+            
+            done();
+        });
+
     });
 
 });

@@ -54,21 +54,21 @@ var Api = /** @class */ (function () {
     Api.getUnitInGrammOrKg = function (co2Result, output) {
         var result = co2Result;
         var finalUnit = 'g';
-        // if ((!output && co2Result > 999) || output === 'kg') {
+        if ((!output && co2Result > 999) || output === 'kg') {
+            result = (result / 1000);
+            result = Math.round((result) * 10) / 10;
+            finalUnit = 'kg';
+        }
+        // if (!output && co2Result > 999) {
         //     result = (result / 1000);
         //     result = Math.round((result) * 10) / 10;
         //     finalUnit = 'kg';
         // }
-        if (!output && co2Result > 999) {
-            result = (result / 1000);
-            result = Math.round((result) * 10) / 10;
-            finalUnit = 'kg';
-        }
-        else if (output == 'kg') {
-            result = (result / 1000);
-            result = Math.round((result) * 10) / 10;
-            finalUnit = 'kg';
-        }
+        // else if (output == 'kg') {
+        //     result = (result / 1000);
+        //     result = Math.round((result) * 10) / 10;
+        //     finalUnit = 'kg';
+        // }
         return result + finalUnit;
     };
     Api.getDistanceInKm = function (distance, unit) {

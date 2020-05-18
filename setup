@@ -1,0 +1,5 @@
+install the dependencies and to compile
+npm i && npm run compile
+
+# Change File Mode For The User execute permission
+chmod +x co2-calculator

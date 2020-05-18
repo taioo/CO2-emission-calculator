@@ -13,8 +13,6 @@ const argv = yargs.scriptName("co2-calculator")
 
 try {
 
-console.log(argv["unit-of-distance"])
-
   const result = Api.main({
     'distance': argv.distance,
     'transportation-method': argv['transportation-method'],
@@ -24,7 +22,9 @@ console.log(argv["unit-of-distance"])
   console.log(result);
 } catch (error) {
   console.error('ERROR: ' + error.message);
+  // enable terminal to see the error
+  throw error;
 };
 
 
-  // yarn start --co2-calcolatro  --transportation-method medium-diesel-car --distance 15 --unit-of-distance km
+  // npm start --  --transportation-method medium-diesel-car --distance 15 --unit-of-distance km

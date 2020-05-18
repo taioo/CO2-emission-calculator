@@ -10,7 +10,6 @@ var argv = yargs.scriptName("co2-calculator")
     'output': { type: 'string', demandOption: false },
 }).argv;
 try {
-    console.log(argv["unit-of-distance"]);
     var result = api_1.Api.main({
         'distance': argv.distance,
         'transportation-method': argv['transportation-method'],

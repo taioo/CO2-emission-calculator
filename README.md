@@ -1,7 +1,5 @@
 # CO2-emission-calculator
- 
-# Developer Challenge (Thaer)
-This (cli) application is part of the Developer Challenge. It is build with NodeJS, therefore, the installation of NodeJS. It is tested successful with v12.10.0.
+It is build with NodeJS, therefore, the installation of NodeJS. It is tested successful with v12.10.0.
 
 ## Setup
 Before you can make use of the application, it is required a terminal to install the dependencies and to compile with the following commands:

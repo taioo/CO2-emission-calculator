@@ -32,8 +32,3 @@ You can run the application like in the following example commands:
 *   `npm start -- --transportation-method medium-diesel-car --distance 15 --unit-of-distance km`
 
 *   `node output/index.js --transportation-method medium-diesel-car --distance 15 --unit-of-distance km`
-
-You can run the tests with following command:
-```
-npm test
-```

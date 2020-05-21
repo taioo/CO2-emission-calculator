@@ -2,4 +2,4 @@
 chmod +x co2-calculator
 
 # install the dependencies, compile and test
-npm i && tsc && npm test
+npm i && npm run compile && npm test

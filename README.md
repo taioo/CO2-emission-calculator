@@ -1,8 +1,9 @@
 # CO2-emission-calculator
 It is build with NodeJS, therefore, the installation of NodeJS. It is tested successful with v12.10.0.
 
-# Optional install node v12
+### Optional: Install node v12
 ```
+curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n &&
 bash n 12 stable
 ```
 ## Setup

@@ -1,6 +1,10 @@
 # CO2-emission-calculator
 It is build with NodeJS, therefore, the installation of NodeJS. It is tested successful with v12.10.0.
 
+# Optional install node v12
+```
+bash n 12 stable
+```
 ## Setup
 Before you can make use of the application, it is required a terminal to install the dependencies and to compile with the following commands:
 ```

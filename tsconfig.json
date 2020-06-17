@@ -2,15 +2,6 @@
   "compilerOptions": {
 
     "outDir": "./output",
-    "plugins": [
-        {
-            "name": "typescript-tslint-plugin",
-            "configFile": "./tslint.json"
-        }
-    ],
-
-
-
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Basic Options */

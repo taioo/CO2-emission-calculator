@@ -3,7 +3,6 @@
        //  "source.fixAll": true,
         "source.fixAll.eslint": true
     },
-    "jest.showCoverageOnLoad": true,
     "jest.debugMode": true,
 
 }

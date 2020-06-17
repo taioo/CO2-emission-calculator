@@ -2,4 +2,4 @@
 chmod +x co2-calculator
 
 # install the dependencies, compile and test
-npm i && npx tsc && npm test
+npm i && npx tsc && npm run coverage

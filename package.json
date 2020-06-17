@@ -6,7 +6,8 @@
   "scripts": {
     "start": "tsc && node output/index.js",
     "compile": "tsc",
-    "test": "jest --collect-coverage && bash openFile"
+    "test": "jest",
+    "coverage": "jest --collect-coverage && bash openFile"
   },
   "repository": {
     "type": "git",

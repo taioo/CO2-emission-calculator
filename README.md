@@ -18,9 +18,9 @@ You can run the tests and read test coverages with following command:
 ```
 npm test
 ```
-to run tests only
+to see coverage 
 ```
-npx jest
+npm run coverage
 ```
 
 ## Run application

@@ -14,9 +14,13 @@ bash setup
 
 ## Testing
 As part of the application are also unit tests that are using the [jest](https://jestjs.io) Framework.
-You can run the tests with following command:
+You can run the tests and read test coverages with following command:
 ```
 npm test
+```
+to run tests only
+```
+npx jest
 ```
 
 ## Run application

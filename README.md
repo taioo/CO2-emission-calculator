@@ -52,18 +52,64 @@ The tool can be called with a numeric distance , a unit-of-distance (kilometer k
 
 You can run the application like in the following example commands:
 
-*   `./co2-calculator --transportation-method medium-diesel-car --distance 15 --unit-of-distance km`
 
-*   `./co2-calculator --distance 1800.5 --transportation-method large-petrol-car`
+```
+./co2-calculator --transportation-method medium-diesel-car --distance 15 --unit-of-distance km
+```
 
-*   `./co2-calculator --transportation-method train --distance 14500 --unit-of-distance m`
+```
+./co2-calculator --distance 1800.5 --transportation-method large-petrol-car
+```
 
-*   `./co2-calculator --transportation-method train --distance 14500 --unit-of-distance m --output kg`
+```
+./co2-calculator --transportation-method train --distance 14500 --unit-of-distance m
+```
+
+```
+./co2-calculator --transportation-method train --distance 14500 --unit-of-distance m --output kg
+```
 
 ### Run with Node
 
  you can run the application with node in the following examples:
 
-*   `npm start -- --transportation-method medium-diesel-car --distance 15 --unit-of-distance km`
+```
+npm start -- --transportation-method medium-diesel-car --distance 15 --unit-of-distance km
+```
 
-*   `node output/index.js --transportation-method medium-diesel-car --distance 15 --unit-of-distance km`
+```
+node output/index.js --transportation-method medium-diesel-car --distance 15 --unit-of-distance km
+```
+<br>
+<br>
+
+# Run/Test in Deno
+
+You can run the application in `Deno` in the 'deno' folder.
+```
+cd deno
+```
+
+example commands:
+
+```
+deno run index.ts --transportation-method medium-diesel-car --distance 15 --unit-of-distance km
+```
+
+```
+deno run index.ts --distance 1800.5 --transportation-method large-petrol-car
+```
+
+```
+deno run index.ts --transportation-method train --distance 14500 --unit-of-distance m
+```
+```
+deno run index.ts --transportation-method train --distance 14500 --unit-of-distance m --output kg
+```
+
+
+Run tests
+
+```
+deno test
+```

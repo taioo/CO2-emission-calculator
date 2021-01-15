@@ -89,6 +89,7 @@ You can run the application in `Deno` in the 'deno' folder.
 ```
 cd deno
 ```
+Or open it in VS-code
 
 example commands:
 

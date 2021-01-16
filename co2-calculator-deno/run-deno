@@ -1,0 +1,5 @@
+# Change File Mode For The User execute permission
+chmod +x co2-calculator
+
+# test
+deno test

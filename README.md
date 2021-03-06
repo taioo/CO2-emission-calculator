@@ -36,7 +36,7 @@ Source: [Defra Greenhouse Gas Conversion Factors 2019](https://www.gov.uk/govern
 # Run application
 The application can be called with a numeric distance , a unit-of-distance (kilometer km or meter m ) and a transportation- method.
 
-There are two builds. One is build with [Node](#node) V14 and another with [Deno](#deno) V1.6 .
+There are two builds. Run with [Node](#node) V14 or with [Deno](#deno) V1.6 .
 
 You can run the application like in the following example commands:
 

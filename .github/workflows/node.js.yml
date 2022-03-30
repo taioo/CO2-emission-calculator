@@ -26,4 +26,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: bash ./co2-calculator-node/run-node
+    - run: npm -v

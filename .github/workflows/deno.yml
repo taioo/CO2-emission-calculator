@@ -31,4 +31,4 @@ jobs:
         with:
           deno-version: v1.x
 
-      - run: deno ./co2-calculator-deno/test
+      - run: cd ./co2-calculator-deno && deno test

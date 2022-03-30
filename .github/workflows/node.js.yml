@@ -28,7 +28,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache-dependency-path: ./co2-calculator-node/package-lock.json
         cache: 'npm'
-    - run:  npm ci --prefix ./co2-calculator-node
-    - run: chmod +x ./co2-calculator-node/co2-calculator
-    - run:  npm test --prefix ./co2-calculator-node
+    - run: cd ./co2-calculator-node
+    - run: npm ci
+    - run: chmod +x co2-calculator
+    - run: npm test
 

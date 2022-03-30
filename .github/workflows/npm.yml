@@ -22,7 +22,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
-      run: |
-        
-        zsh "${{ format('{0}/co2-calculator-node/run-node', github.workspace) }}"
+    - name: doIt
+      run: zsh "${{ format('{0}/co2-calculator-node/run-node', github.workspace) }}"

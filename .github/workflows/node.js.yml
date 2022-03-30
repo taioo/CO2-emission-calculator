@@ -29,4 +29,6 @@ jobs:
         cache-dependency-path: ./co2-calculator-node/package-lock.json
         cache: 'npm'
     - run:  npm ci --prefix ./co2-calculator-node
+    - run: chmod +x ./co2-calculator-node/co2-calculator
     - run:  npm test --prefix ./co2-calculator-node
+

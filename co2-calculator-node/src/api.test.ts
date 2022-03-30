@@ -188,16 +188,16 @@ describe('Validation', () => {
     ).toBe(1000)
   })
 
-  test('end 2 end', (done) => {
-    const command = './co2-calculator --transportation-method medium-diesel-car --distance 15 --unit-of-distance km'
-    const expectedOut = 'Your trip caused 2.6kg of CO2-equivalent.'
+//  test('end 2 end', (done) => {
+//    const command = './co2-calculator --transportation-method medium-diesel-car --distance 15 --unit-of-distance km'
+//    const expectedOut = 'Your trip caused 2.6kg of CO2-equivalent.'
 
-    child.exec(command, (_error: child.ExecException | null, stdout: string) => {
+  //  child.exec(command, (_error: child.ExecException | null, stdout: string) => {
       // error from cmd output
-      expect(stdout).toBe(expectedOut + '\n')
-      done()
-    })
-  })
+//      expect(stdout).toBe(expectedOut + '\n')
+//      done()
+//    })
+ // })
 
   /*
 
